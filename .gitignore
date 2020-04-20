@@ -1,3 +1,7 @@
+### Project specific ###
+bin/*
+.bin*
+
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
 
 # Created by https://www.gitignore.io/api/visualstudiocode,macos,go,linux,vim,windows
