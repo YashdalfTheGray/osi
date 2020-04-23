@@ -12,11 +12,11 @@ type LayerName string
 
 // This "enum" is here to make the layer names into constants
 const (
-	Physical LayerName = iota + 1
-	DataLink
-	Network
-	Transport
-	Session
-	Presentation
-	Application
+	Physical     LayerName = "Physical"
+	DataLink     LayerName = "DataLink"
+	Network      LayerName = "Network"
+	Transport    LayerName = "Transport"
+	Session      LayerName = "Session"
+	Presentation LayerName = "Presentation"
+	Application  LayerName = "Application"
 )
