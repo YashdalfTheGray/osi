@@ -8,7 +8,7 @@ type Layer interface {
 }
 
 // LayerName is used to represent a layer
-type LayerName int
+type LayerName string
 
 // This "enum" is here to make the layer names into constants
 const (
