@@ -3,19 +3,19 @@ package layers
 // ApplicationLayer represents the highest layer of the OSI stack
 // It accepts data directly from the user
 type ApplicationLayer struct {
-	name string
+	name LayerName
 	up   *Layer
 	down *Layer
 }
 
 // NewApplicationLayer creates a new instance of ApplicationLayer
 func NewApplicationLayer(up, down *Layer) *ApplicationLayer {
-	return &ApplicationLayer{"Application", up, down}
+	return &ApplicationLayer{Application, up, down}
 }
 
 // GetName returns the name of the layer
 func (ap ApplicationLayer) GetName() string {
-	return ap.name
+	return string(ap.name)
 }
 
 // SendData is a function that the layer uses to move data up or down
