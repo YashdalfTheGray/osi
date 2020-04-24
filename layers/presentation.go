@@ -3,7 +3,7 @@ package layers
 // PresentationLayer represents the highest layer of the OSI stack
 // It accepts data directly from the user
 type PresentationLayer struct {
-	name LayerName
+	Name LayerName
 	up   *Layer
 	down *Layer
 }
@@ -11,11 +11,6 @@ type PresentationLayer struct {
 // NewPresentationLayer creates a new instance of PresentationLayer
 func NewPresentationLayer(up, down *Layer) *PresentationLayer {
 	return &PresentationLayer{Presentation, up, down}
-}
-
-// GetName returns the name of the layer
-func (ap PresentationLayer) GetName() string {
-	return string(ap.name)
 }
 
 // SendData is a function that the layer uses to move data up or down
