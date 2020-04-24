@@ -1,5 +1,7 @@
 package layers
 
+import "fmt"
+
 // ApplicationLayer represents the highest layer of the OSI stack
 // It accepts data directly from the user
 type ApplicationLayer struct {
@@ -30,4 +32,14 @@ func (al *ApplicationLayer) ReceiveData(from *Layer, data interface{}) bool {
 
 func (al *ApplicationLayer) receiveDataFromUser(data interface{}) bool {
 	return al.SendData(al.down, data)
+}
+
+func (al *ApplicationLayer) receiveDataFromPresentation(data interface{}) bool {
+	if str, ok := data.(string); ok {
+		fmt.Println(str)
+		return true
+	} else {
+		fmt.Println("Got malformed data from the presentation layer")
+		return false
+	}
 }
