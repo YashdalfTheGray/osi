@@ -3,8 +3,8 @@ package layers
 // Layer defines the basic structure of an OSI layer
 type Layer interface {
 	Name() LayerName
-	SendData(to *Layer, data interface{}) bool
-	ReceiveData(from *Layer, data interface{}) bool
+	SendData(to Layer, data interface{}) bool
+	ReceiveData(from Layer, data interface{}) bool
 }
 
 // LayerName is used to represent a layer
