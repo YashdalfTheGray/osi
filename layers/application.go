@@ -27,7 +27,10 @@ func (al *ApplicationLayer) SendData(to *Layer, data interface{}) bool {
 
 // ReceiveData is a function that the layer uses to get data from other layers
 func (al *ApplicationLayer) ReceiveData(from *Layer, data interface{}) bool {
-	return true
+	if (*from).Name() == Presentation {
+		return al.receiveDataFromPresentation(data)
+	}
+	return al.receiveDataFromUser(data)
 }
 
 func (al *ApplicationLayer) receiveDataFromUser(data interface{}) bool {
