@@ -27,3 +27,7 @@ func (al *ApplicationLayer) SendData(to *Layer, data interface{}) bool {
 func (al *ApplicationLayer) ReceiveData(from *Layer, data interface{}) bool {
 	return true
 }
+
+func (al *ApplicationLayer) receiveDataFromUser(data interface{}) bool {
+	return al.SendData(al.down, data)
+}
