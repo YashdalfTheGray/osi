@@ -22,7 +22,7 @@ func (al ApplicationLayer) Name() LayerName {
 
 // SendData is a function that the layer uses to move data up or down
 func (al ApplicationLayer) SendData(to Layer, data interface{}) bool {
-	return true
+	return to.ReceiveData(al, data)
 }
 
 // ReceiveData is a function that the layer uses to get data from other layers
