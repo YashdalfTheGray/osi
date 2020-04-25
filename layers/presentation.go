@@ -4,12 +4,12 @@ package layers
 // It accepts data directly from the user
 type PresentationLayer struct {
 	name LayerName
-	up   *Layer
-	down *Layer
+	up   Layer
+	down Layer
 }
 
 // NewPresentationLayer creates a new instance of PresentationLayer
-func NewPresentationLayer(up, down *Layer) *PresentationLayer {
+func NewPresentationLayer(up, down Layer) *PresentationLayer {
 	return &PresentationLayer{Presentation, up, down}
 }
 
@@ -19,11 +19,11 @@ func (pl PresentationLayer) Name() LayerName {
 }
 
 // SendData is a function that the layer uses to move data up or down
-func (pl *PresentationLayer) SendData(to *Layer, data interface{}) bool {
+func (pl *PresentationLayer) SendData(to Layer, data interface{}) bool {
 	return true
 }
 
 // ReceiveData is a function that the layer uses to get data from other layers
-func (pl *PresentationLayer) ReceiveData(from *Layer, data interface{}) bool {
+func (pl *PresentationLayer) ReceiveData(from Layer, data interface{}) bool {
 	return true
 }
