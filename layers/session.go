@@ -25,6 +25,13 @@ func (sl SessionLayer) SendData(to Layer, data interface{}) bool {
 
 // ReceiveData is a function that the layer uses to get data from other layers
 func (sl SessionLayer) ReceiveData(from Layer, data interface{}) bool {
+	if from.Name() == Presentation {
+		return sl.receiveDataFromPresentation(data)
+	}
+	return sl.receiveDataFromTransport(data)
+}
+
+func (sl SessionLayer) receiveDataFromPresentation(data interface{}) bool {
 	return true
 }
 
