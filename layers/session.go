@@ -27,3 +27,7 @@ func (sl SessionLayer) SendData(to Layer, data interface{}) bool {
 func (sl SessionLayer) ReceiveData(from Layer, data interface{}) bool {
 	return true
 }
+
+func (sl SessionLayer) receiveDataFromPresentation(data interface{}) bool {
+	return true;
+}
