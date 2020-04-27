@@ -31,3 +31,7 @@ func (pl PresentationLayer) ReceiveData(from Layer, data interface{}) bool {
 func (pl PresentationLayer) receiveDataFromApplication(data interface{}) bool {
 	return true
 }
+
+func (pl PresentationLayer) receiveDataFromSession(data interface{}) bool {
+	return true
+}
