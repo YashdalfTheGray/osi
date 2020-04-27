@@ -32,7 +32,9 @@ func (pl PresentationLayer) ReceiveData(from Layer, data interface{}) bool {
 }
 
 func (pl PresentationLayer) receiveDataFromApplication(data interface{}) bool {
-	return true
+	// this is where we would do stuff like encryption and encoding
+	// but for the most part, we're just going to make it a 1:1 passthrough
+	return pl.SendData(pl.down, data)
 }
 
 func (pl PresentationLayer) receiveDataFromSession(data interface{}) bool {
