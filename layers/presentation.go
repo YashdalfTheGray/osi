@@ -25,7 +25,10 @@ func (pl PresentationLayer) SendData(to Layer, data interface{}) bool {
 
 // ReceiveData is a function that the layer uses to get data from other layers
 func (pl PresentationLayer) ReceiveData(from Layer, data interface{}) bool {
-	return true
+	if from.Name() == Application {
+		return pl.receiveDataFromApplication(data)
+	}
+	return pl.receiveDataFromSession(data)
 }
 
 func (pl PresentationLayer) receiveDataFromApplication(data interface{}) bool {
