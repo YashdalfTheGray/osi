@@ -38,5 +38,9 @@ func (pl PresentationLayer) receiveDataFromApplication(data interface{}) bool {
 }
 
 func (pl PresentationLayer) receiveDataFromSession(data interface{}) bool {
-	return true
+	// similar to receiveDataFromApplication, this is also basically a 1:1
+	// passthrough because by the time the data gets to the session layer,
+	// things should already be user readable. This is, if we supported it,
+	// where we would do decoding and decryption
+	return pl.SendData(pl.up, data)
 }
