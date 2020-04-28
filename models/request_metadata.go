@@ -13,9 +13,12 @@ type RequestMetadata struct {
 // This constructor will fail (and panic) if the URL parsing
 // is not successful.
 func NewRequestMetadata(rawURL string) RequestMetadata {
-	if parsed, err := url.Parse(rawURL); err == nil {
-		return RequestMetadata{rawAddress: rawURL, URL: parsed}
-	} else {
+	parsed, err := url.Parse(rawURL)
+
+	if err != nil {
 		panic(err)
 	}
+
+	return RequestMetadata{rawAddress: rawURL, URL: parsed}
+
 }
