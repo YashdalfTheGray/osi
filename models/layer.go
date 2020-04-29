@@ -1,4 +1,4 @@
-package layers
+package models
 
 // Layer defines the basic structure of an OSI layer
 type Layer interface {
