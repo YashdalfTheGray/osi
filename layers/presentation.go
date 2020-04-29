@@ -1,31 +1,33 @@
 package layers
 
+import "github.com/YashdalfTheGray/osi/models"
+
 // PresentationLayer represents the highest layer of the OSI stack
 // It accepts data directly from the user
 type PresentationLayer struct {
-	name LayerName
-	up   Layer
-	down Layer
+	name models.LayerName
+	up   models.Layer
+	down models.Layer
 }
 
 // NewPresentationLayer creates a new instance of PresentationLayer
-func NewPresentationLayer(up, down Layer) *PresentationLayer {
-	return &PresentationLayer{Presentation, up, down}
+func NewPresentationLayer(up, down models.Layer) *PresentationLayer {
+	return &PresentationLayer{models.Presentation, up, down}
 }
 
 // Name returns the name of the layer
-func (pl PresentationLayer) Name() LayerName {
+func (pl PresentationLayer) Name() models.LayerName {
 	return pl.name
 }
 
 // SendData is a function that the layer uses to move data up or down
-func (pl PresentationLayer) SendData(to Layer, data interface{}) bool {
+func (pl PresentationLayer) SendData(to models.Layer, data interface{}) bool {
 	return to.ReceiveData(pl, data)
 }
 
 // ReceiveData is a function that the layer uses to get data from other layers
-func (pl PresentationLayer) ReceiveData(from Layer, data interface{}) bool {
-	if from.Name() == Application {
+func (pl PresentationLayer) ReceiveData(from models.Layer, data interface{}) bool {
+	if from.Name() == models.Application {
 		return pl.receiveDataFromApplication(data)
 	}
 	return pl.receiveDataFromSession(data)
