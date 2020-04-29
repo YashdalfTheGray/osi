@@ -1,11 +1,15 @@
 package layers
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/YashdalfTheGray/osi/models"
+)
 
 // ApplicationLayer represents the highest layer of the OSI stack
 // It accepts data directly from the user
 type ApplicationLayer struct {
-	name LayerName
+	name models.LayerName
 	up   Layer
 	down Layer
 }
