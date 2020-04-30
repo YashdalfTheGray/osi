@@ -2,23 +2,23 @@ package models
 
 import "net/url"
 
-// RequestMetadata contains the raw address of the place that the user
+// NetworkLocation contains the raw address of the place that the user
 // wants to send a message as well as the fully parsed version of it
-type RequestMetadata struct {
+type NetworkLocation struct {
 	rawAddress string
 	URL        *url.URL
 }
 
-// NewRequestMetadata constructs a new instance of RequestMetadata.
+// NewNetworkLocation constructs a new instance of NetworkLocation.
 // This constructor will fail (and panic) if the URL parsing
 // is not successful.
-func NewRequestMetadata(rawURL string) RequestMetadata {
+func NewNetworkLocation(rawURL string) NetworkLocation {
 	parsed, err := url.Parse(rawURL)
 
 	if err != nil {
 		panic(err)
 	}
 
-	return RequestMetadata{rawAddress: rawURL, URL: parsed}
+	return NetworkLocation{rawAddress: rawURL, URL: parsed}
 
 }
