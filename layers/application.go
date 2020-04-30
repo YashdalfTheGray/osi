@@ -10,28 +10,28 @@ import (
 // It accepts data directly from the user
 type ApplicationLayer struct {
 	name models.LayerName
-	up   Layer
-	down Layer
+	up   models.Layer
+	down models.Layer
 }
 
 // NewApplicationLayer creates a new instance of ApplicationLayer
-func NewApplicationLayer(up, down Layer) ApplicationLayer {
-	return ApplicationLayer{Application, up, down}
+func NewApplicationLayer(up, down models.Layer) ApplicationLayer {
+	return ApplicationLayer{models.Application, up, down}
 }
 
 // Name returns the name of the layer
-func (al ApplicationLayer) Name() LayerName {
+func (al ApplicationLayer) Name() models.LayerName {
 	return al.name
 }
 
 // SendData is a function that the layer uses to move data up or down
-func (al ApplicationLayer) SendData(to Layer, data interface{}) bool {
+func (al ApplicationLayer) SendData(to models.Layer, data interface{}) bool {
 	return to.ReceiveData(al, data)
 }
 
 // ReceiveData is a function that the layer uses to get data from other layers
-func (al ApplicationLayer) ReceiveData(from Layer, data interface{}) bool {
-	if from.Name() == Presentation {
+func (al ApplicationLayer) ReceiveData(from models.Layer, data interface{}) bool {
+	if from.Name() == models.Presentation {
 		return al.receiveDataFromPresentation(data)
 	}
 	return al.receiveDataFromUser(data)
