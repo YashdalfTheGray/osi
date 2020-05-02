@@ -5,12 +5,12 @@ import "fmt"
 // Message contains some data that needs to be sent to a
 // location on the network
 type Message struct {
-	Data    interface{}
+	Data    string
 	Address NetworkLocation
 }
 
 // NewMessage constructs a new instance of Message
-func NewMessage(data interface{}, address string) Message {
+func NewMessage(data string, address string) Message {
 	loc := NewNetworkLocation(address)
 	return Message{Data: data, Address: loc}
 }
