@@ -38,7 +38,11 @@ func (al ApplicationLayer) ReceiveData(from models.Layer, data interface{}) bool
 }
 
 func (al ApplicationLayer) receiveDataFromUser(data interface{}) bool {
-	return al.SendData(al.down, data)
+	if message, ok := data.(models.Message); ok {
+		return al.SendData(al.down, message.Data)
+	}
+	fmt.Println("Expected message with string data and string address from the user")
+	return false
 }
 
 func (al ApplicationLayer) receiveDataFromPresentation(data interface{}) bool {
