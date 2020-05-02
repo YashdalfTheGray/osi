@@ -3,8 +3,8 @@ package models
 // Layer defines the basic structure of an OSI layer
 type Layer interface {
 	Name() LayerName
-	SendData(to Layer, data interface{}) bool
-	ReceiveData(from Layer, data interface{}) bool
+	SendData(to Layer, message Message) bool
+	ReceiveData(from Layer, message Message) bool
 }
 
 // LayerName is used to represent a layer
